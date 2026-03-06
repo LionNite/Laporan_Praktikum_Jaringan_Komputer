@@ -6,4 +6,8 @@
 
 ## Alat yang digunakan
 1. Wireshark
-2. Python
+   <img src= "image/Wireshark.png" width=1000>
+   Wireshark dapat di download pada link berikut ini: https://www.wireshark.org/download.html
+3. Python
+   <img src= "image/Python.png" width=1000>
+   Python dapat di download melalui link berikut ini: https://www.python.org/downloads
