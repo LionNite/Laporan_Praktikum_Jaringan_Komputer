@@ -1,8 +1,5 @@
 # Laporan Praktikum - Jaringan Komputer - Week 3
-## Modul 3: HTML
-
-## Tujuan Praktikum:
-1. Mahasiswa dapat menginvestigasi cara kerja protokol HTTP menggunakan Wireshark.
+Modul 3: HTML
 
 ## Alat & Bahan yang digunakan:
 1. Wireshark
@@ -12,39 +9,60 @@
 ## Apa itu HTTP:
 HTTP (Hypertext Transfer Protocol) adalah protokol komunikasi utama yang digunakan untuk mengirimkan dan menerima data di jaringan World Wide Web (WWW). Secara sederhana, HTTP adalah "aturan bahasa" yang memungkinkan web browser (seperti Chrome atau Firefox) dan web server (tempat website disimpan) untuk saling berkomunikasi.
 
-#### 1. Basic HTTP GET/response interaction
-1. Langkah 1: Buka browser web dan jalankan aplikasi Wireshark.
-2. Langkah 2: Masukkan filter "http" pada kolom filter di Wireshark agar hanya paket HTTP yang ditampilkan.
-3. Langkah 3: Akses URL target (contoh: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html).
-4. Langkah 4: Hentikan pengambilan paket (stop capture) setelah halaman berhasil dimuat sepenuhnya.
-5. Langkah 5: Analisis pesan GET (permintaan dari browser) dan OK (tanggapan dari server) untuk melihat struktur header dasarnya.
+---
 
->[image/Basic HTTP GET response interaction.png]
+## Tujuan Praktikum:
+Mahasiswa dapat menganalisis cara kerja protokol HTTP menggunakan Wireshark, meliputi struktur pesan GET/Response, mekanisme Conditional GET, penanganan dokumen panjang, objek tersemat, dan proses autentikasi.
 
-**Analisis:**
->[1. Analisis Pesan HTTP GET (Packet No. 8878)]
-> Ini adalah pesan yang dikirim oleh browser kamu untuk meminta file.
-> Metode HTTP: Menggunakan metode GET, yang digunakan untuk mengambil data dari server tanpa mengubah data tersebut
-> URI (Uniform Resource Identifier): File yang diminta adalah /wireshark-labs/HTTP-wireshark-file1.html.
-> Header Penting:
->> Host: Menunjukkan alamat server tujuan, yaitu gaia.cs.umass.edu.
->> User-Agent: Menginformasikan server tentang jenis browser dan sistem operasi yang kamu gunakan (dalam gambar terlihat menggunakan Chrome di Windows 10).
->> Accept-Language: Memberitahu server bahwa browser lebih menyukai konten dalam bahasa Inggris (en-US).
+---
 
->[2. Analisis Pesan HTTP Response (Packet No. 9059)]
-> Ini adalah balasan dari server setelah menerima permintaan GET tadi.
-> Status Code: 200 OK. Ini menandakan bahwa server berhasil menemukan file yang diminta dan sedang mengirimkannya.
-> Content-Type: Terdeteksi sebagai text/html, yang berarti data yang dikirim adalah dokumen web (HTML).
-> Data Payload: Jika kamu melihat bagian Packet Bytes di Wireshark, kamu akan melihat kode HTML asli dari file tersebut (misalnya tag <html>, <body>, dsb).
+## 1. Analisis Hasil Praktikum
 
->[3. Analisis Alamat IP dan Protokol Transport]
-> IP Source & Destination: Terlihat klien menggunakan IP 192.168.1.12 dan server berada di IP 128.119.245.12.
-> Enkapsulasi TCP: Sebelum pesan HTTP dikirim, terlihat pada panel detail bahwa HTTP berjalan di atas TCP (Transmission Control Protocol) menggunakan port 80. Hal ini menjamin bahwa data HTML sampai dengan utuh dan urut ke browser kamu.
+### 1.1. Interaksi Dasar HTTP GET/Response
+<img src="image/1.png">
 
-#### 2. HTTP CONDITIONAL GET/response interaction
-#### 3. Retrieving Long Documents
-#### 4. HTML Documents dengan Embedded Objects
-#### 5. HTTP Authentication
+Pada pengujian pertama, dilakukan pengambilan file `HTTP-wireshark-file1.html`.
+* **Analisis Paket:**
+    * Paket No. **8878** menunjukkan permintaan **GET** dari klien (`192.168.1.12`) ke server (`128.119.245.12`).
+    * Paket No. **9059** menunjukkan respons **200 OK** dari server yang berisi data HTML.
+* **Header Detail:** Terlihat penggunaan browser **Edge/Chrome** pada sistem operasi **Windows 10** melalui field `User-Agent`. Server tujuan berada di `gaia.cs.umass.edu`.
 
->[KESIMPULAN]
-> 
+#### 1.1.2 HTTP Conditional GET
+<img src="image/1.1.png">
+
+Pengujian ini bertujuan melihat bagaimana browser berinteraksi dengan cache.
+* **Analisis Paket:** Browser melakukan permintaan ke `HTTP-wireshark-file2.html` (Paket No. **1317**).
+* **Hasil:** Server memberikan respons **200 OK** (Paket No. **1542**). Dalam mekanisme ini, jika cache sudah ada, browser biasanya menyertakan header `If-Modified-Since` untuk menghemat bandwidth.
+
+### 1.2. Pengambilan Dokumen Panjang
+<img src="image/2.png">
+
+Percobaan ini menggunakan file `HTTP-wireshark-file3.html` yang memiliki konten lebih besar.
+* **Analisis Paket:** Permintaan GET dikirim pada paket No. **115**.
+* **Segmentasi TCP:** Meskipun pesan HTTP terlihat sebagai satu kesatuan, pada lapisan transport data ini dipecah menjadi beberapa segmen TCP karena ukurannya yang besar, lalu disusun kembali (*reassembled*) oleh Wireshark untuk ditampilkan sebagai satu respons HTTP 200 OK (Paket No. **127**).
+
+### 1.3. HTML dengan Objek Tersemat
+<img src="image/3.png">
+
+Pada file `HTTP-wireshark-file4.html`, halaman mengandung objek tambahan (seperti gambar).
+* **Analisis Paket:** Permintaan GET utama pada paket No. **3150**.
+* **Observasi:** Setelah menerima file HTML dasar (Paket No. **3152**), browser akan melakukan permintaan GET tambahan secara otomatis untuk setiap objek (gambar) yang direferensikan di dalam kode HTML tersebut.
+
+### 1.4. Autentikasi HTTP
+<img src="image/4.png">
+
+Pengujian pada file `HTTP-wireshark-file5.html` yang dilindungi kata sandi.
+* **Tahap 1:** Browser mengirimkan GET (Paket No. **719**), namun server membalas dengan **401 Unauthorized** (Paket No. **724**). Di dalam header ini terdapat field `WWW-Authenticate: Basic`, yang memicu munculnya kotak dialog login pada browser.
+* **Tahap 2:** Setelah kredensial dimasukkan, browser mengirimkan GET kembali (Paket No. **8450**) yang kini menyertakan header `Authorization: Basic`.
+* **Tahap 3:** Server memverifikasi data dan akhirnya memberikan akses dengan respons **200 OK** (Paket No. **8498**).
+
+---
+
+## Kesimpulan
+Berdasarkan praktikum ini, dapat disimpulkan bahwa:
+1. HTTP bekerja berdasarkan model *request-response* di atas protokol TCP (Port 80).
+2. Mekanisme *Conditional GET* dan *Caching* sangat penting untuk efisiensi jaringan.
+3. Objek tersemat dalam HTML membutuhkan transaksi HTTP terpisah untuk setiap objeknya.
+4. Autentikasi dasar HTTP mengirimkan kredensial dalam bentuk teks terenkode (Base64) melalui header `Authorization`, yang menunjukkan bahwa metode ini kurang aman jika tidak dibarengi dengan HTTPS.
+
+---
