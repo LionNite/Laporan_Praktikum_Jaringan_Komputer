@@ -15,9 +15,10 @@ Repositori ini berisi kumpulan laporan pengerjaan praktikum mata kuliah **Jaring
 ---
 
 ## Struktur Repositori
-* `Week_01/`: Berisi laporan praktikum minggu ke-1.
-* `Week_02/`: Berisi laporan praktikum minggu ke-2.
-* `Week_03/`: Modul 3: HTML .
+* `Week_01/`: Modul 1: RUNNING MODUL
+* `Week_02/`: Modul 2: PENGENALAN TOOLS
+* `Week_03/`: Modul 3: HTML
+* `Week_04/`: Modul 4: DNS
 * *(Dan seterusnya)*
 
 > [!NOTE]
