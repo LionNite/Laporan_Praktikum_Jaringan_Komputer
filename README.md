@@ -20,6 +20,7 @@ Repositori ini berisi kumpulan laporan pengerjaan praktikum mata kuliah **Jaring
 * [Laporan Week 3: HTTPS](Laporan/Week_3%20-%20HTTPS)
 * [Laporan Week 4: DNS](Laporan/Week_4%20-%20DNS)
 * [Laporan Week 5: UDP](Laporan/Week_5%20-%20UDP)
+* [Laporan Week 6: TCP](Laporan/Week_6%20-%20TCP)
 * *(Dan seterusnya)*
 
 > [!NOTE]
