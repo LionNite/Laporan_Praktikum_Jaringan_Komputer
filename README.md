@@ -21,6 +21,7 @@ Repositori ini berisi kumpulan laporan pengerjaan praktikum mata kuliah **Jaring
 * [Laporan Week 4: DNS](Laporan/Week_4%20-%20DNS)
 * [Laporan Week 5: UDP](Laporan/Week_5%20-%20UDP)
 * [Laporan Week 6: TCP](Laporan/Week_6%20-%20TCP)
+* [Laporan Week 7: Socket Programming ](Laporan/Week_7%20-%20%SOCKET%20PROGRAMMING)
 * *(Dan seterusnya)*
 
 > [!NOTE]
