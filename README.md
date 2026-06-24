@@ -22,6 +22,9 @@ Repositori ini berisi kumpulan laporan pengerjaan praktikum mata kuliah **Jaring
 * [Laporan Week 5: UDP](Laporan/Week_5%20-%20UDP)
 * [Laporan Week 6: TCP](Laporan/Week_6%20-%20TCP)
 * [Laporan Week 7: Socket Programming](Laporan/Week_7%20-%20SOCKET%20PROGRAMMING)
+* [Laporan Week 9: WEB SERVER](Laporan/Week_9%20-%20WEB%20SERVER)
+* [Laporan Week 13: Ethernet and ARP](Laporan/Week_13%20-%20Ethernet%20and%20ARP)
+* [Laporan Week 14: 802.11 WiFi](Laporan/Week_14%20-%20802.11%20WiFi)
 * *(Dan seterusnya)*
 
 > [!NOTE]
