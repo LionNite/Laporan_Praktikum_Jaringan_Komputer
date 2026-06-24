@@ -24,8 +24,8 @@ Repositori ini berisi kumpulan laporan pengerjaan praktikum mata kuliah **Jaring
 * [Laporan Week 7: Socket Programming](Laporan/Week_7%20-%20SOCKET%20PROGRAMMING)
 * [Laporan Week 9: WEB SERVER](Laporan/Week_9%20-%20WEB%20SERVER)
 * [Laporan Week 10: IP](Laporan/Week_10%20-%20IP)
-* [Laporan Week 11: IP](Laporan/Week_11%20-%20DHCP)
-* [Laporan Week 12: ICMP](Laporan/Week_11%20-%20ICMP)
+* [Laporan Week 11: DHCP](Laporan/Week_11%20-%20DHCP)
+* [Laporan Week 12: ICMP](Laporan/Week_12%20-%20ICMP)
 * [Laporan Week 13: Ethernet and ARP](Laporan/Week_13%20-%20Ethernet%20and%20ARP)
 * [Laporan Week 14: 802.11 WiFi](Laporan/Week_14%20-%20802.11%20WiFi)
 * *(Dan seterusnya)*
