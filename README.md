@@ -14,7 +14,7 @@ Repositori ini berisi kumpulan laporan pengerjaan praktikum mata kuliah **Jaring
 
 ---
 
-## Struktur Repositori
+## List Laporan
 * [Laporan Week 1: Running Modul](Laporan/Week_1%20-%20RUNNING%20MODUL)
 * [Laporan Week 2: Pengenalan Tools](Laporan/Week_2%20-%20PENGENALAN%20TOOLS)
 * [Laporan Week 3: HTTPS](Laporan/Week_3%20-%20HTTPS)
