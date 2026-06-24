@@ -28,7 +28,6 @@ Repositori ini berisi kumpulan laporan pengerjaan praktikum mata kuliah **Jaring
 * [Laporan Week 12: ICMP](Laporan/Week_12%20-%20ICMP)
 * [Laporan Week 13: Ethernet and ARP](Laporan/Week_13%20-%20Ethernet%20and%20ARP)
 * [Laporan Week 14: 802.11 WiFi](Laporan/Week_14%20-%20802.11%20WiFi)
-* *(Dan seterusnya)*
 
 > [!NOTE]
 > Repositori ini dibuat untuk memenuhi tugas akademik dan sebagai dokumentasi pribadi selama masa perkuliahan.
